@@ -62,6 +62,20 @@
     pkgs.gnome-user-docs
   ];
 
+  # Make Dolphin's org.freedesktop.FileManager1 service available to browsers.
+  services.dbus.packages = [ pkgs.kdePackages.dolphin ];
+
+  # Without Nautilus, GNOME's portal cannot provide its delegated file chooser.
+  # Keep GNOME for desktop-specific portals and use the GTK chooser instead.
+  xdg.portal.config.gnome = {
+    default = [
+      "gnome"
+      "gtk"
+    ];
+    "org.freedesktop.impl.portal.FileChooser" = "gtk";
+    "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+  };
+
   # Users
   users.users.isolino = {
     isNormalUser = true;

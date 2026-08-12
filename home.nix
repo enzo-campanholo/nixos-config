@@ -11,6 +11,7 @@
       pkgs.ghostty
       pkgs.git
       pkgs.github-cli
+      pkgs.kdePackages.dolphin
       pkgs.neovim
 
       pkgsUnstable.claude-code
@@ -31,4 +32,9 @@
   };
 
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications."inode/directory" = "org.kde.dolphin.desktop";
+  };
 }
