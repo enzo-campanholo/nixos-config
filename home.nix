@@ -13,6 +13,7 @@
       pkgs.github-cli
       pkgs.kdePackages.dolphin
       pkgs.neovim
+      pkgs.sioyek
 
       pkgsUnstable.claude-code
       pkgsUnstable.pi-coding-agent
