@@ -1,0 +1,31 @@
+# OCaml
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
+*.o
+*.cmx
+*.cmxs
+*.cmxa
+*.cmt
+*.cmti
+*.byte
+*.native
+
+# Dune
+_build/
+*.install
+
+# OPAM
+_opam/
+
+# Merlin
+.merlin
+
+# Nix
+/result
+/result-*
+
+# direnv
+/.direnv/

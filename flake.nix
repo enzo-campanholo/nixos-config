@@ -28,6 +28,17 @@
       ...
     }:
     {
+      templates = {
+        ocaml = {
+          path = ./templates/ocaml;
+          description = "OCaml 5 development shell";
+        };
+        prolog = {
+          path = ./templates/prolog;
+          description = "Scryer Prolog development shell";
+        };
+      };
+
       nixosConfigurations.MONSTRAO = nixpkgs.lib.nixosSystem {
         modules = [
           ./configuration.nix
