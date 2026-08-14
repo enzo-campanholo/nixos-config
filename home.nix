@@ -5,6 +5,16 @@
   ...
 }:
 
+let
+  sioyekX11 = pkgs.sioyek.overrideAttrs (oldAttrs: {
+    qtWrapperArgs =
+      (oldAttrs.qtWrapperArgs or [ ])
+      ++ [
+        "--set QT_QPA_PLATFORM xcb"
+        "--prefix XDG_DATA_DIRS : ${pkgs.glib.getSchemaDataDirPath pkgs.gtk3}"
+      ];
+  });
+in
 {
   home = {
     packages = [
@@ -13,7 +23,7 @@
       pkgs.github-cli
       pkgs.kdePackages.dolphin
       pkgs.neovim
-      pkgs.sioyek
+      sioyekX11
 
       pkgsUnstable.claude-code
       pkgsUnstable.pi-coding-agent
