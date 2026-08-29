@@ -15,6 +15,12 @@ in
   home = {
     username = "isolino";
     homeDirectory = "/home/isolino";
+    file.".XCompose".text = ''
+      include "%L"
+
+      <dead_acute> <c> : "ç" U00E7
+      <dead_acute> <C> : "Ç" U00C7
+    '';
     stateVersion = "26.05";
     packages = [
       pkgs.helium
