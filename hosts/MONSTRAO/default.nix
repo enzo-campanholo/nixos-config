@@ -50,7 +50,10 @@
   };
 
   services = {
-    displayManager.gdm.enable = true;
+    displayManager.gdm = {
+      enable = true;
+      autoSuspend = false;
+    };
     desktopManager.gnome.enable = true;
     fwupd.enable = true;
     gnome.core-apps.enable = false;

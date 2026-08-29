@@ -40,7 +40,10 @@ in
       extraPackages = epkgs: [ epkgs.proof-general ];
     };
 
-    fish.enable = true;
+    fish = {
+      enable = true;
+      functions.fish_greeting = "";
+    };
 
     ghostty = {
       enable = true;
@@ -80,6 +83,16 @@ in
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
     "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
+
+    "org/gnome/desktop/session".idle-delay = lib.gvariant.mkUint32 0;
+
+    "org/gnome/settings-daemon/plugins/power" = {
+      idle-dim = false;
+      sleep-inactive-ac-timeout = lib.gvariant.mkInt32 0;
+      sleep-inactive-ac-type = "nothing";
+      sleep-inactive-battery-timeout = lib.gvariant.mkInt32 0;
+      sleep-inactive-battery-type = "nothing";
+    };
   };
 
   xdg.mimeApps = {
