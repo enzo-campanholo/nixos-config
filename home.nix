@@ -43,7 +43,20 @@ in
 
     emacs = {
       enable = true;
-      extraPackages = epkgs: [ epkgs.proof-general ];
+      overrides = self: _super: {
+        selenized-theme = self.callPackage ./packages/emacs-selenized-theme.nix { };
+      };
+      extraPackages = epkgs: [
+        epkgs.proof-general
+        epkgs.selenized-theme
+      ];
+      extraConfig = ''
+        (require 'proof-general)
+        (add-to-list 'custom-theme-load-path
+                     (file-name-directory
+                      (locate-library "selenized-black-theme")))
+        (load-theme 'selenized-black t)
+      '';
     };
 
     fish = {
