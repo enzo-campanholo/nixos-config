@@ -53,7 +53,10 @@ in
 
     ghostty = {
       enable = true;
-      settings.command = lib.getExe pkgs.fish;
+      settings = {
+        command = lib.getExe pkgs.fish;
+        theme = "Selenized Black";
+      };
     };
 
     gh.enable = true;
@@ -71,6 +74,15 @@ in
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
+      plugins = [ pkgs.vimPlugins.vim-selenized ];
+      initLua = ''
+        vim.opt.number = true
+        vim.opt.relativenumber = true
+
+        vim.opt.termguicolors = true
+        vim.opt.background = "dark"
+        vim.cmd.colorscheme("selenized_bw")
+      '';
     };
   };
 

@@ -30,6 +30,10 @@
       overlay = final: prev: {
         helium = final.callPackage ./packages/helium.nix { };
 
+        vimPlugins = prev.vimPlugins // {
+          vim-selenized = final.callPackage ./packages/vim-selenized.nix { };
+        };
+
         unstable = import nixpkgs-unstable {
           inherit (prev.stdenv.hostPlatform) system;
           inherit (prev) config;
